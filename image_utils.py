@@ -1,4 +1,3 @@
-import numpy as np
 from PIL import Image
 import os
 from fast_layers import max_pool_forward_fast
@@ -8,8 +7,8 @@ import datetime
 def jpeg2matrix(path):
 
 	im = Image.open(path)
-	m = np.asarray(im.convert('RGB'))
-	m = np.transpose(m, (2,0,1)).astype("float")
+	m = np.asarray(im.convert('RGB')) #np.asarray:引数に配列コピーせずそのまま返す
+	m = np.transpose(m, (2,0,1)).astype("float") #np.transpose(a,axes=None):転置，反転する軸を引数で指定することも可
 	
 	return m
 
@@ -102,7 +101,7 @@ def get_data(nsubj=6, type="gallery"):
 	sub_id = np.asarray(map(float, sub_id))
 
 	# keep only the number of subjects needed
-	lim = np.argmax(sub_id>nsubj)
+	lim = np.argmax(sub_id>nsubj) #np.argmax:引数に与えられた配列の最大インデックスを取得
 	files = files[:lim]
 
 
@@ -110,7 +109,7 @@ def get_data(nsubj=6, type="gallery"):
 
 	print("\n"+type+":%d" % nfiles)
 
-	X = np.zeros((nfiles, 3, 256, 256))
+	X = np.zeros((nfiles, 3, 256, 256))　#np.zeros:要素がすべて0である0行列を新しく生成する関数
 	y = np.zeros(nfiles)
 
 	filename = files[0]
@@ -127,7 +126,7 @@ def get_data(nsubj=6, type="gallery"):
 	
 	
 	# Normalize X
-	X -= np.mean(X, axis=0)
+	X -= np.mean(X, axis=0)　#np.mean:配列の平均
 
 	# Cast y to int
 	y = y.astype(int)
@@ -175,10 +174,10 @@ def get_data_sametaum(nsubj=6, type="gallery", tau=1, m=1):
 	files.sort(key = lambda x: x.split("_")[3])
 	# get subjects for each file
 	sub_id = [x.split("_")[3] for x in files]
-	sub_id = np.asarray(map(float, sub_id))
+	sub_id = np.asarray(map(float, sub_id)) #numpy
 
 	# keep only the number of subjects needed
-	lim = np.argmax(sub_id>nsubj)
+	lim = np.argmax(sub_id>nsubj) #numpy
 	files = files[:lim]
 	#print(files)
 
@@ -187,8 +186,8 @@ def get_data_sametaum(nsubj=6, type="gallery", tau=1, m=1):
 	print("\n"+type+":%d" % nfiles)
 
 	# Initialize outputs
-	X = np.zeros((nfiles, 3, 256, 256))
-	y = np.zeros(nfiles)
+	X = np.zeros((nfiles, 3, 256, 256)) #numpy
+	y = np.zeros(nfiles) #numpy
 
 	filename = files[0]
 
@@ -204,7 +203,7 @@ def get_data_sametaum(nsubj=6, type="gallery", tau=1, m=1):
 	
 	
 	# Normalize X
-	X -= np.mean(X, axis=0)
+	X -= np.mean(X, axis=0) #numpy
 
 	# Cast y to int
 	y = y.astype(int)
@@ -252,10 +251,10 @@ def get_data_sametaum_nopool(nsubj=6, type="gallery", tau=1, m=1):
 	files.sort(key = lambda x: x.split("_")[3])
 	# get subjects for each file
 	sub_id = [x.split("_")[3] for x in files]
-	sub_id = np.asarray(map(float, sub_id))
+	sub_id = np.asarray(map(float, sub_id)) #numpy
 
 	# keep only the number of subjects needed
-	lim = np.argmax(sub_id>nsubj)
+	lim = np.argmax(sub_id>nsubj) #numpy
 	files = files[:lim]
 	#print(files)
 
@@ -263,8 +262,8 @@ def get_data_sametaum_nopool(nsubj=6, type="gallery", tau=1, m=1):
 
 	print("\n"+type+":%d" % nfiles)
 
-	X = np.zeros((nfiles, 3, 256, 256))
-	y = np.zeros(nfiles)
+	X = np.zeros((nfiles, 3, 256, 256)) #numpy
+	y = np.zeros(nfiles)#numpy
 
 	filename = files[0]
 
@@ -280,7 +279,7 @@ def get_data_sametaum_nopool(nsubj=6, type="gallery", tau=1, m=1):
 	
 	
 	# Normalize X
-	X -= np.mean(X, axis=0)
+	X -= np.mean(X, axis=0)#numpy
 
 	# Cast y to int
 	y = y.astype(int)
