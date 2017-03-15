@@ -86,9 +86,9 @@ def get_data(nsubj=6, type="gallery"):
 
 
 	if type=="probe":
-		path = "/home/deepstation/workspace/2312016030/Data/PDA"
+		path = "/home/deepstation/workspace/2312016030/Data/PDA/prove"
 	else:
-		path = "/home/deepstation/workspace/2312016030/Data/PDA/Result_RP256_G"
+		path = "/home/deepstation/workspace/2312016030/Data/PDA/gallery"
 
 	
 	# get files names
@@ -158,9 +158,9 @@ def get_data_sametaum(nsubj=6, type="gallery", tau=1, m=1):
 
 	
 	if type=="probe":
-		path = "/home/deepstation/workspace/2312016030/Data/PDA"
+		path = "/home/deepstation/workspace/2312016030/Data/PDA/prove"
 	else:
-		path = "/home/deepstation/workspace/2312016030/Data/PDA/Result_RP256_G"
+		path = "/home/deepstation/workspace/2312016030/Data/PDA/gallery"
 
 	
 	# get files names
@@ -235,9 +235,9 @@ def get_data_sametaum_nopool(nsubj=6, type="gallery", tau=1, m=1):
 
 	
 	if type=="probe":
-		path = "/home/deepstation/workspace/2312016030/Data/PDA"
+		path = "/home/deepstation/workspace/2312016030/Data/PDA/prove"
 	else:
-		path = "/home/deepstation/workspace/2312016030/Data/PDA/Result_RP256_G"
+		path = "/home/deepstation/workspace/2312016030/Data/PDA/gallery"
 
 	
 	# get files names
