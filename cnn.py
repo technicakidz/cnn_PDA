@@ -1,5 +1,3 @@
-import numpy as np
-
 from layers import *
 from fast_layers import *
 from layer_utils import *
@@ -19,7 +17,7 @@ class ConvNet(object):
   
   def __init__(self, input_dim=(3, 32, 32), num_filters=32, filter_size=7,
                hidden_dim=100, num_classes=10, weight_scale=1e-1, reg=0.0,
-               dtype=np.float32):
+               dtype=np.float32): #np.float32
     """
     Initialize a new network.
     
@@ -51,7 +49,7 @@ class ConvNet(object):
 
 
     # Weights initialization for convolutionnal layer
-    self.params['W1'] = np.random.normal(scale=weight_scale, size=(num_filters, C, HH, WW))
+    self.params['W1'] = np.random.normal(scale=weight_scale, size=(num_filters, C, HH, WW))#
     self.params['b1'] = np.zeros(num_filters)
 
     # Weights initialization for hidden affine layer
@@ -111,9 +109,9 @@ class ConvNet(object):
     data_loss, dscores = softmax_loss(scores, y)
 
     # Add regularization loss (penalize large weights)
-    reg_loss = 0.5 * self.reg * np.sum(W1**2)
-    reg_loss += 0.5 * self.reg * np.sum(W2**2)
-    reg_loss += 0.5 * self.reg * np.sum(W3**2)
+    reg_loss = 0.5 * self.reg * np.sum(W1**2) #np.sum:各要素の総和
+    reg_loss += 0.5 * self.reg * np.sum(W2**2)#numpy
+    reg_loss += 0.5 * self.reg * np.sum(W3**2)#numpy
     loss = data_loss + reg_loss
     
     # Backpropagate into the affine layer
@@ -171,7 +169,7 @@ class ConvNetDrop(object):
   
   def __init__(self, input_dim=(3, 32, 32), num_filters=32, filter_size=7,
                hidden_dim=100, num_classes=10, weight_scale=1e-1, reg=0.0,
-               dtype=np.float32, dropout=0.5, seed=123):
+               dtype=np.float32, dropout=0.5, seed=123): #numpy
     """
     Initialize a new network, using dropout.
     
@@ -205,8 +203,8 @@ class ConvNetDrop(object):
 
 
     # Weights initialization for convolutionnal layer
-    self.params['W1'] = np.random.normal(scale=weight_scale, size=(num_filters, C, HH, WW))
-    self.params['b1'] = np.zeros(num_filters)
+    self.params['W1'] = np.random.normal(scale=weight_scale, size=(num_filters, C, HH, WW))#numpy.random.normal(平均, 分散, 出力する件数)
+    self.params['b1'] = np.zeros(num_filters)#numpy
 
     # Weights initialization for hidden affine layer
     self.params['W2'] = np.random.normal(scale=weight_scale, size=(H2*W2*num_filters, hidden_dim))
@@ -294,9 +292,9 @@ class ConvNetDrop(object):
     dw2 += self.reg * W2
     dw1 += self.reg * W1
 
-    reg_loss = 0.5 * self.reg * np.sum(W1**2)
-    reg_loss += 0.5 * self.reg * np.sum(W2**2)
-    reg_loss += 0.5 * self.reg * np.sum(W3**2)
+    reg_loss = 0.5 * self.reg * np.sum(W1**2)#numpy
+    reg_loss += 0.5 * self.reg * np.sum(W2**2)#numpy
+    reg_loss += 0.5 * self.reg * np.sum(W3**2)#numpy
     loss = data_loss + reg_loss
 
 
